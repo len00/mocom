@@ -4,7 +4,7 @@ if RUBY_VERSION >= '1.9'
   Encoding.default_external = Encoding::UTF_8
 end
 
-require './eval/eval_res.rb'
+# require './eval/eval_res.rb'
 require 'em-websocket'
 require 'json'
 require 'fileutils'
@@ -186,7 +186,7 @@ def log_messages(n)
   return log_messages
 end
 
-resque
+# resque
 
 mkdir_if_not_exist('./content')
 mkdir_if_not_exist('./ip_addr')
@@ -212,6 +212,7 @@ class Analyzer
     when 'comment'
       comment = msg
       @user_num_posts[comment['id']] += 1
+
       p res_eval = eval_res_value(comment['body'], @marge_df, @df_max, @pn_table)
 
       result = ""
