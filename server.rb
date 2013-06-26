@@ -213,12 +213,13 @@ class Analyzer
       comment = msg
       @user_num_posts[comment['id']] += 1
 
-      p res_eval = eval_res_value(comment['body'], @marge_df, @df_max, @pn_table)
-
+      # Ruby1.9以上にてMeCabが使える環境ではコメントを外す
+      # p res_eval = eval_res_value(comment['body'], @marge_df, @df_max, @pn_table)
       result = ""
-      if res_eval[:res_value] > 0.05
-        result <<  "<span style=\"color: red\">\"#{escape(comment['body'])}\"</span>"
-      end
+      # if res_eval[:res_value] > 0.05
+      #   result <<  "<span style=\"color: red\">\"#{escape(comment['body'])}\"</span>"
+      # end
+
       # if comment['body'] =~ /#GROUP-ONLY/i
       #   result << "グループ書き込み<span style=\"color: red\">\"#{escape(comment['body'])}\"</span>を観測しました。"
       # else
@@ -231,7 +232,9 @@ class Analyzer
       #   result << "<div class=\"stat\">ユーザID: #{uid}, 書き込み数: #{count}</div>"
       # }
       # result << "</div>"
-      result
+
+      # Ruby1.9以上にてMeCabが使える環境ではコメントを外す
+      # result
     else
       nil
     end
